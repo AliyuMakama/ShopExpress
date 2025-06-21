@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopExpress - Online Marketplace</title>
+    <link rel="stylesheet" href="style.css"> 
+    </head>
+    <body>
+        <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" id="Home" class="logo" onclick="showPage('home')">
+                    <img src="user.png" alt="logo" width="20px" height="20px">
+                     ShopExpress
+                </a>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for products...">
+                    <button class="btn-s"><img src="Search.png" alt="search icon" width="30px" height="30px"></button>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#"><img src="heart.png" alt="wishlist logo" height="15px" width="15px"> Wishlist</a>
+                    <a href="#"><img src="cartp.gif" alt="cart logo" height="20px" width="20px"> Cart <span class="cart-count" id="headerCartCount">0</span></a>
+                    <a href="self.html"><img src="user.png" alt="user logo" height="15px" width="15px"> Account</a>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="category-nav">
+            <div class="container">
+                <div class="category-list">
+                    <div class="category-item-active">All Products</div>
+                    <div class="category-item" ><a href="electronics.html"> Electronics </a></div>
+                    <div class="category-item" ><a href="fashion.html"> Fashion </a></div>
+                    <div class="category-item" ><a href="fashion.html"> Home and Kitchen </a></div>
+                    <div class="category-item" ><a href="#"> Beauty  </a></div>
+                    <div class="category-item" ><a href="toys.html"> Toys </a></div>
+                </div>
+            </div>
+        </div>
+    </header><br>
+     <!-- Main Content - Pages -->
+     <main class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero-slider">
+                <div class="hero-content">
+                    <h1>Welcome to ShopExpress</h1>
+                    <p>Discover amazing products at unbeatable prices</p><br>
+                    <button class="btn-shop">Shop Now</button>
+                </div>
+            </section>
+            <div class="products-container">
+                <h2 class="section-title">Top Deals, <span class="discount">up to 80% discount</span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; See more>></h2>
+                <div class="products-wrapper">
+                    <!-- Product Grid 1 -->
+                    <div class="products-grid">
+                        <img src="Elecronics/Watch.jpg" alt="Smart Watch">
+                        <p>Smart Watch</p>
+                        <p class="price">$49.99 <del style="color: grey; opacity: 0.5;">$89.99</del></p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 2 -->
+                    <div class="products-grid">
+                        <img src="Toys/Heli.jpg" alt="RC Helicopter">
+                        <p>RC Helicopter</p>
+                        <p class="price">$79.99 <del style="color: grey; opacity: 0.5;">$99.99</del></p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                     <!-- Product Grid 3 -->
+                     <div class="products-grid">
+                        <img src="Elecronics/playstation-5-pro-3840x2160-19032.jpg" alt="Playstation 5">
+                        <p>Playstation 5</p>
+                        <p class="price">$399 <del style="color: grey; opacity: 0.5;">$599</del></p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    <!-- Product Grid 4 -->
+                    <div class="products-grid">
+                        <img src="Elecronics/Samsung S25.jpg" alt="Samsung S25 Ultra">
+                        <p>Samsung S25 Ultra</p>
+                        <p class="price">$799 <del style="color: grey; opacity: 0.5;"> $1199</del> </p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="products-container">
+                <h2 class="section-title">Featured Products &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See more>></h2>
+                <div class="products-wrapper">
+                    <!-- Product Grid 1 -->
+                    <div class="products-grid">
+                        <img src="Home and Kitchen/Coffee pod machine.jpg" alt="Coffee Pod Machine">
+                        <p>Coffee Pod Machine</p>
+                        <p class="price">$499.99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 2 -->
+                    <div class="products-grid">
+                        <img src="Home and Kitchen/Dish washer.jpg" alt="Dish washer">
+                        <p>Dish Washer</p>
+                        <p class="price">$399</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                     <!-- Product Grid 3 -->
+                     <div class="products-grid">
+                        <img src="Home and Kitchen/Ice cube maker.jpg" alt="Ice Cube Maker">
+                        <p>Ice Cube Maker</p>
+                        <p class="price">$199</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    <!-- Product Grid 4 -->
+                    <div class="products-grid">
+                        <img src="Home and Kitchen/mixer.jpg" alt="mixer">
+                        <p>mixer</p>
+                        <p class="price">$29.99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="products-container">
+                <h2 class="section-title">New Arrivals &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 See more>></h2>
+                <div class="products-wrapper">
+                    <!-- Product Grid 1 -->
+                    <div class="products-grid">
+                        <img src="Fashion/pexels-asphotograpy-291759.jpg" alt="Wedding Dress">
+                        <p>Wedding Dress</p>
+                        <p class="price">$599</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 2 -->
+                    <div class="products-grid">
+                        <img src="Fashion/PngItem_5153812.png" alt="Pink Shirt">
+                        <p>Pink Shirt</p>
+                        <p class="price">$49.99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                     <!-- Product Grid 3 -->
+                     <div class="products-grid">
+                        <img src="Fashion/anonimostory.com_Instagram_claresharleydavidson_3510678062386049363_1800521147.jpeg" alt="Tracksuit">
+                        <p>Tracksuit</p>
+                        <p class="price">$99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="add to wishlist">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    <!-- Product Grid 4 -->
+                    <div class="products-grid">
+                        <img src="Fashion/men shirt 1.jpg" alt="Men Shirt">
+                        <p>Men Shirt</p>
+                        <p class="price">$99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn">♡</button>
+                            <button class="btn cart-btn" title="add to Cart">+ Cart</button>
+                            <button class="btn buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Testimonials Section -->
+<section class="testimonials">
+    <h2 class="testimonials-title">What Our Customers Say</h2>
+    <div class="testimonials-wrapper">
+        <div class="testimonial-card">
+            <p class="testimonial-text">"ShopExpress exceeded my expectations. Fast delivery and great customer service!"</p>
+            <h4 class="testimonial-author">Engr. Adamu Mujaheed Aliyu</h4>
+        </div>
+        <div class="testimonial-card">
+            <p class="testimonial-text">"Amazing deals! I got my PS5 at a fraction of the regular price."</p>
+            <h4 class="testimonial-author">Khaleed Yusuf</h4>
+        </div>
+        <div class="testimonial-card">
+            <p class="testimonial-text">"Quality products and a seamless shopping experience. Highly recommended!"</p>
+            <h4 class="testimonial-author">Dr. Aliyu Makama</h4>
+        </div>
+    </div>
+</section>
+            <footer>
+                <div class="contain">
+                    <div class="footer-content">
+                        <div class="footer-column">
+                            <h3>ShopExpress</h3>
+                            <p>Your one-stop shop for all your needs. Quality products at affordable prices with fast delivery.</p><br>
+                            <div class="social-links">
+                                <a href="#">
+                                    <img src="facebook.png" alt="facebook logo" height="25px" width="25px" title="follow us on facebook">
+                                </a>
+                                <a href="#">
+                                    <img src="youtube.png" alt="youtube logo" height="25px" width="25px" title="follow us on youtube">
+                                </a>
+                                <a href="#">
+                                    <img src="whatsapp.png" alt="whatsapp logo" height="25px" width="25px" title="follow us on whatsapp">
+                                </a>
+                                <a href="#">
+                                    <img src="instagram.png" alt="instagram logo" height="25px" width="25px" title="follow us on instagram">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footer-column">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="#Home" >Home</a></li>
+                                <li><a href="electronics.html" >Electronics</a></li>
+                                <li><a href="fashion.html" >Fashion</a></li>
+                                <li><a href="kitchen.html" >Home & Garden</a></li>
+                                <li><a href="#" >Beauty</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h3>Customer Service</h3>
+                            <ul>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Shipping Policy</a></li>
+                                <li><a href="#">Returns & Refunds</a></li>
+                                <li><a href="#">Track Order</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h3>Newsletter</h3>
+                            <p>Subscribe to get updates on new products and special offers</p>
+                            <form class="newsletter-form">
+                                <input type="email" placeholder="Your email address">
+                                <button type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 ShopExpress. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </footer>
+    </body>
+</html>

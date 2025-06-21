@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopExpress - Online Marketplace</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: #2563eb;
+            display: flex;
+            font-size: 24px;
+            text-decoration: none;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .search-bar {
+            display: flex;
+            width: 50%;
+            max-width: 500px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            border-radius: 30px 0 0 30px;
+            padding: 10px 20px;
+            border: 2px solid #2563eb;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: #1d4ed8;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-s {
+            padding: 10px 20px;
+            background: #2563eb;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-s:hover {
+            background: #1d4ed8;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .user-actions a {
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .user-actions a:hover {
+            color: #2563eb;
+        }
+
+        .user-actions img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cart-count {
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-top: 1px solid #eee;
+        }
+
+        .category-list {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .category-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-item {
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .category-item-active {
+            background-color: #2563eb;
+            color: white;
+            font-weight: 600;
+        }
+
+        .category-item:hover {
+            background-color: #2563eb;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero-slider {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Hero.jpg') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            color: white;
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-shop {
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-shop:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #1d4ed8;
+        }
+
+        /* Products Section */
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            color: #333;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid #ff4747;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .section-title a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .products-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .products-grid {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            padding: 15px;
+            position: relative;
+        }
+
+        .products-grid:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .products-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .products-grid:hover img {
+            transform: scale(1.05);
+        }
+
+        .products-grid p {
+            font-size: 0.95rem;
+            color: #333;
+            margin: 5px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .price {
+            color: #ff4747;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 8px 0;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 8px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+
+        .wishlist-btn {
+            background: transparent;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+            flex: 1;
+        }
+
+        .wishlist-btn.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        .wishlist-btn:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .cart-btn {
+            background: #2563eb;
+            color: white;
+            flex: 1;
+        }
+
+        .cart-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .buy-btn {
+            background: #ff4747;
+            color: white;
+            flex: 1;
+        }
+
+        .buy-btn:hover {
+            background: #e63e3e;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #cbd5e0;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #2563eb;
+            transform: translateY(-3px);
+        }
+
+        .social-links img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #1d4ed8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 0;
+            }
+
+            .search-bar {
+                width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .products-wrapper {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <img src="user.png" alt="logo">
+                    ShopExpress
+                </a>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for products...">
+                    <button class="btn-s"><img src="Search.png" alt="search icon"></button>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#" onclick="showWishlist()"><img src="heart.png" alt="wishlist logo"> Wishlist</a>
+                    <a href="#" onclick="showCart()"><img src="cartp.gif" alt="cart logo"> Cart <span class="cart-count" id="headerCartCount">0</span></a>
+                    <a href="#"><img src="user.png" alt="user logo"> Account</a>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="category-nav">
+            <div class="container">
+                <div class="category-list">
+                    <div class="category-item category-item-active" onclick="filterProducts('all')">All Products</div>
+                    <div class="category-item" onclick="filterProducts('electronics')">Electronics</div>
+                    <div class="category-item" onclick="filterProducts('fashion')">Fashion</div>
+                    <div class="category-item" onclick="filterProducts('home')">Home & Kitchen</div>
+                    <div class="category-item" onclick="filterProducts('beauty')">Beauty</div>
+                    <div class="category-item" onclick="filterProducts('toys')">Toys</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero-slider">
+                <div class="hero-content">
+                    <h1>Welcome to ShopExpress</h1>
+                    <p>Discover amazing products at unbeatable prices</p>
+                    <button class="btn-shop" onclick="scrollToProducts()">Shop Now</button>
+                </div>
+            </section>
+
+            <!-- Top Deals -->
+            <div class="products-container" id="top-deals">
+                <h2 class="section-title">Top Deals <a href="#">See more &raquo;</a></h2>
+                <div class="products-wrapper">
+                    <!-- Product Grid 1 -->
+                    <div class="products-grid" data-category="electronics">
+                        <img src="Elecronics/Watch.jpg" alt="Smart Watch">
+                        <p>Smart Watch</p>
+                        <p class="price">$49.99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Smart Watch', 49.99, 'Elecronics/Watch.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Smart Watch', 49.99)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 2 -->
+                    <div class="products-grid" data-category="toys">
+                        <img src="Toys/Heli.jpg" alt="RC Helicopter">
+                        <p>RC Helicopter</p>
+                        <p class="price">$79.99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('RC Helicopter', 79.99, 'Toys/Heli.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('RC Helicopter', 79.99)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 3 -->
+                    <div class="products-grid" data-category="electronics">
+                        <img src="Elecronics/playstation-5-pro-3840x2160-19032.jpg" alt="Playstation 5">
+                        <p>Playstation 5</p>
+                        <p class="price">$299</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Playstation 5', 299, 'Elecronics/playstation-5-pro-3840x2160-19032.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Playstation 5', 299)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 4 -->
+                    <div class="products-grid" data-category="electronics">
+                        <img src="Elecronics/Samsung S25.jpg" alt="Samsung S25 Ultra">
+                        <p>Samsung S25</p>
+                        <p class="price">$799</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Samsung S25', 799, 'Elecronics/Samsung S25.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Samsung S25', 799)">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Products -->
+            <div class="products-container" id="featured-products">
+                <h2 class="section-title">Featured Products <a href="#">See more &raquo;</a></h2>
+                <div class="products-wrapper">
+                    <!-- Product Grid 1 -->
+                    <div class="products-grid" data-category="home">
+                        <img src="Home and Kitchen/Coffee pod machine.jpg" alt="Coffee Pod Machine">
+                        <p>Coffee Pod Machine</p>
+                        <p class="price">$499.99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Coffee Pod Machine', 499.99, 'Home and Kitchen/Coffee pod machine.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Coffee Pod Machine', 499.99)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 2 -->
+                    <div class="products-grid" data-category="home">
+                        <img src="Home and Kitchen/Dish washer.jpg" alt="Dish washer">
+                        <p>Dish Washer</p>
+                        <p class="price">$399</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Dish Washer', 399, 'Home and Kitchen/Dish washer.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Dish Washer', 399)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 3 -->
+                    <div class="products-grid" data-category="home">
+                        <img src="Home and Kitchen/Ice cube maker.jpg" alt="Ice Cube Maker">
+                        <p>Ice Cube Maker</p>
+                        <p class="price">$199</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Ice Cube Maker', 199, 'Home and Kitchen/Ice cube maker.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Ice Cube Maker', 199)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 4 -->
+                    <div class="products-grid" data-category="home">
+                        <img src="Home and Kitchen/mixer.jpg" alt="mixer">
+                        <p>Mixer</p>
+                        <p class="price">$29.99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Mixer', 29.99, 'Home and Kitchen/mixer.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Mixer', 29.99)">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Arrivals -->
+            <div class="products-container" id="new-arrivals">
+                <h2 class="section-title">New Arrivals <a href="#">See more &raquo;</a></h2>
+                <div class="products-wrapper">
+                    <!-- Product Grid 1 -->
+                    <div class="products-grid" data-category="fashion">
+                        <img src="Fashion/pexels-asphotograpy-291759.jpg" alt="Wedding Dress">
+                        <p>Wedding Dress</p>
+                        <p class="price">$599</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Wedding Dress', 599, 'Fashion/pexels-asphotograpy-291759.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Wedding Dress', 599)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 2 -->
+                    <div class="products-grid" data-category="fashion">
+                        <img src="Fashion/PngItem_5153812.png" alt="Pink Shirt">
+                        <p>Pink Shirt</p>
+                        <p class="price">$49.99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Pink Shirt', 49.99, 'Fashion/PngItem_5153812.png')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Pink Shirt', 49.99)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 3 -->
+                    <div class="products-grid" data-category="fashion">
+                        <img src="Fashion/anonimostory.com_Instagram_claresharleydavidson_3510678062386049363_1800521147.jpeg" alt="Tracksuit">
+                        <p>Tracksuit</p>
+                        <p class="price">$99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Tracksuit', 99, 'Fashion/anonimostory.com_Instagram_claresharleydavidson_3510678062386049363_1800521147.jpeg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Tracksuit', 99)">Buy Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Grid 4 -->
+                    <div class="products-grid" data-category="fashion">
+                        <img src="Fashion/men shirt 1.jpg" alt="Men Shirt">
+                        <p>Men Shirt</p>
+                        <p class="price">$99</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn" title="Add to wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('Men Shirt', 99, 'Fashion/men shirt 1.jpg')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('Men Shirt', 99)">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Page (Hidden by default) -->
+        <div id="cart" class="page" style="display: none;">
+            <h2 class="section-title">Your Shopping Cart</h2>
+            <div id="cart-items" class="products-wrapper">
+                <!-- Cart items will be added here dynamically -->
+                <p class="empty-cart-message">Your cart is empty</p>
+            </div>
+            <div class="cart-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span id="cart-shipping">$5.99</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="cart-total">$5.99</span>
+                </div>
+                <button class="btn-shop" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <!-- Wishlist Page (Hidden by default) -->
+        <div id="wishlist" class="page" style="display: none;">
+            <h2 class="section-title">Your Wishlist</h2>
+            <div id="wishlist-items" class="products-wrapper">
+                <!-- Wishlist items will be added here dynamically -->
+                <p class="empty-wishlist-message">Your wishlist is empty</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ShopExpress</h3>
+                    <p>Your one-stop shop for all your needs. Quality products at affordable prices with fast delivery.</p>
+                    <div class="social-links">
+                        <a href="#">
+                            <img src="facebook.png" alt="facebook logo">
+                        </a>
+                        <a href="#">
+                            <img src="youtube.png" alt="youtube logo">
+                        </a>
+                        <a href="#">
+                            <img src="whatsapp.png" alt="whatsapp logo">
+                        </a>
+                        <a href="#">
+                            <img src="twitter.png" alt="twitter logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="filterProducts('electronics')">Electronics</a></li>
+                        <li><a href="#" onclick="filterProducts('fashion')">Fashion</a></li>
+                        <li><a href="#" onclick="filterProducts('home')">Home & Garden</a></li>
+                        <li><a href="#" onclick="filterProducts('beauty')">Beauty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new products and special offers</p>
+                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopExpress. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Cart and Wishlist data
+        let cart = [];
+        let wishlist = [];
+        let currentFilter = 'all';
+
+        // DOM Elements
+        const pages = document.querySelectorAll('.page');
+        const cartCountElement = document.getElementById('headerCartCount');
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartSubtotalElement = document.getElementById('cart-subtotal');
+        const cartShippingElement = document.getElementById('cart-shipping');
+        const cartTotalElement = document.getElementById('cart-total');
+        const wishlistItemsElement = document.getElementById('wishlist-items');
+        const toastElement = document.getElementById('toast');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartFromStorage();
+            loadWishlistFromStorage();
+            updateCartCount();
+        });
+
+        // Page navigation functions
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.style.display = page.id === pageId ? 'block' : 'none';
+            });
+            
+            if (pageId === 'cart') {
+                renderCart();
+            } else if (pageId === 'wishlist') {
+                renderWishlist();
+            }
+            
+            // Scroll to top when changing pages
+            window.scrollTo(0, 0);
+        }
+
+        function showCart() {
+            showPage('cart');
+        }
+
+        function showWishlist() {
+            showPage('wishlist');
+        }
+
+        function scrollToProducts() {
+            document.getElementById('top-deals').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Cart functions
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            saveCartToStorage();
+            updateCartCount();
+            showToast(`${name} added to cart`);
+            
+            // Pulse animation on cart icon
+            const cartIcon = document.querySelector('.user-actions a:nth-child(2)');
+            cartIcon.classList.add('pulse');
+            setTimeout(() => {
+                cartIcon.classList.remove('pulse');
+            }, 500);
+        }
+
+        function updateCartItemQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.name !== name);
+                }
+                
+                saveCartToStorage();
+                updateCartCount();
+                renderCart();
+            }
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            saveCartToStorage();
+            updateCartCount();
+            renderCart();
+            showToast(`${name} removed from cart`);
+        }
+
+        function renderCart() {
+            if (cart.length === 0) {
+                cartItemsElement.innerHTML = '<p class="empty-cart-message">Your cart is empty</p>';
+                cartSubtotalElement.textContent = '$0.00';
+                cartShippingElement.textContent = '$0.00';
+                cartTotalElement.textContent = '$0.00';
+                return;
+            }
+            
+            let subtotal = 0;
+            let html = '';
+            
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                
+                html += `
+                    <div class="products-grid cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <p>${item.name}</p>
+                        <p class="price">$${item.price.toFixed(2)}</p>
+                        <div class="quantity-controls">
+                            <button onclick="updateCartItemQuantity('${item.name}', -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateCartItemQuantity('${item.name}', 1)">+</button>
+                        </div>
+                        <button class="btn remove-btn" onclick="removeFromCart('${item.name}')">Remove</button>
+                    </div>
+                `;
+            });
+            
+            const shipping = subtotal > 50 ? 0 : 5.99;
+            const total = subtotal + shipping;
+            
+            cartItemsElement.innerHTML = html;
+            cartSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+            cartShippingElement.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+            cartTotalElement.textContent = `$${total.toFixed(2)}`;
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = count;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty');
+                return;
+            }
+            
+            showToast('Proceeding to checkout...');
+            // In a real app, you would redirect to a checkout page
+        }
+
+        // Wishlist functions
+        function toggleWishlist(button) {
+            const productGrid = button.closest('.products-grid');
+            const name = productGrid.querySelector('p').textContent;
+            const price = parseFloat(productGrid.querySelector('.price').textContent.replace('$', ''));
+            const image = productGrid.querySelector('img').src;
+            
+            const index = wishlist.findIndex(item => item.name === name);
+            
+            if (index === -1) {
+                wishlist.push({ name, price, image });
+                button.classList.add('active');
+                showToast(`${name} added to wishlist`);
+            } else {
+                wishlist.splice(index, 1);
+                button.classList.remove('active');
+                showToast(`${name} removed from wishlist`);
+            }
+            
+            saveWishlistToStorage();
+            
+            // Heart animation
+            button.classList.add('heart-beat');
+            setTimeout(() => {
+                button.classList.remove('heart-beat');
+            }, 500);
+            
+            // If we're on the wishlist page, re-render it
+            if (document.getElementById('wishlist').style.display === 'block') {
+                renderWishlist();
+            }
+        }
+
+        function renderWishlist() {
+            if (wishlist.length === 0) {
+                wishlistItemsElement.innerHTML = '<p class="empty-wishlist-message">Your wishlist is empty</p>';
+                return;
+            }
+            
+            let html = '';
+            
+            wishlist.forEach(item => {
+                html += `
+                    <div class="products-grid">
+                        <img src="${item.image}" alt="${item.name}">
+                        <p>${item.name}</p>
+                        <p class="price">$${item.price.toFixed(2)}</p>
+                        <div class="button-group">
+                            <button class="btn wishlist-btn active" title="Remove from wishlist" onclick="toggleWishlist(this)">♡</button>
+                            <button class="btn cart-btn" title="Add to Cart" onclick="addToCart('${item.name}', ${item.price}, '${item.image}')">+ Cart</button>
+                            <button class="btn buy-btn" onclick="buyNow('${item.name}', ${item.price})">Buy Now</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            wishlistItemsElement.innerHTML = html;
+        }
+
+        // Product filtering
+        function filterProducts(category) {
+            currentFilter = category;
+            
+            // Update active category button
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.classList.toggle('category-item-active', item.textContent.toLowerCase().includes(category));
+            });
+            
+            // Filter products
+            document.querySelectorAll('.products-grid').forEach(product => {
+                const shouldShow = category === 'all' || product.dataset.category === category;
+                product.style.display = shouldShow ? 'block' : 'none';
+            });
+            
+            // Scroll to products
+            document.getElementById('top-deals').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Buy Now function
+        function buyNow(name, price) {
+            addToCart(name, price, '');
+            showPage('cart');
+        }
+
+        // Newsletter subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            showToast(`Thanks for subscribing with ${email}!`);
+            event.target.reset();
+        }
+
+        // Toast notification
+        function showToast(message) {
+            toastElement.textContent = message;
+            toastElement.classList.add('show');
+            
+            setTimeout(() => {
+                toastElement.classList.remove('show');
+            }, 3000);
+        }
+
+        // Local storage functions
+        function saveCartToStorage() {
+            localStorage.setItem('shopexpress-cart', JSON.stringify(cart));
+        }
+
+        function loadCartFromStorage() {
+            const savedCart = localStorage.getItem('shopexpress-cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        }
+
+        function saveWishlistToStorage() {
+            localStorage.setItem('shopexpress-wishlist', JSON.stringify(wishlist));
+        }
+
+        function loadWishlistFromStorage() {
+            const savedWishlist = localStorage.getItem('shopexpress-wishlist');
+            if (savedWishlist) {
+                wishlist = JSON.parse(savedWishlist);
+                
+                // Mark wishlist buttons as active for items in wishlist
+                document.querySelectorAll('.products-grid').forEach(product => {
+                    const name = product.querySelector('p').textContent;
+                    const wishlistButton = product.querySelector('.wishlist-btn');
+                    
+                    if (wishlistButton && wishlist.some(item => item.name === name)) {
+                        wishlistButton.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        // Initialize wishlist buttons for products already in wishlist
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.products-grid').forEach(product => {
+                const name = product.querySelector('p').textContent;
+                const wishlistButton = product.querySelector('.wishlist-btn');
+                
+                if (wishlistButton && wishlist.some(item => item.name === name)) {
+                    wishlistButton.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

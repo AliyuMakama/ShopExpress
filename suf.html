@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <fieldset>
+            <legend>
+                    <img src="user.png">
+            </legend>
+            <form>
+            <div id="fr">
+                <div class="row">
+                    <label for="first name">First Name:</label>
+                    <input type="text" placeholder="First Name" required>
+
+                    <label for="Surname">Surname:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" placeholder="Surame" required>
+                    <br>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="row">
+                    <label for="state">State:&nbsp;</label>
+                    <input type="text" placeholder="State" required>
+
+                    <label for="area">Area:&nbsp;</label>
+                    <input type="text" placeholder="Area" required>
+                    <br>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="row">
+                    <label for="email">Email Address:&nbsp;</label>
+                    <input type="email" required placeholder="Example@gmai.com">
+
+                    <label for="tel">Phone Number:&nbsp;</label>
+                    <input type="tel" required placeholder="Your Phone number">
+                    <br>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="row">
+                    <label for="Date">Date of Birth:&nbsp;</label>
+                    <input type="date" required placeholder="Example@gmai.com" id="Date">
+
+                    <label for="hobby">Hobby:&nbsp;</label>
+                    <input type="text" required placeholder="Your Hobby">
+                    <br>
+                </div>      
+            </div>
+            </form>
+            <div id="bt">
+            <p id="p1"><input type="checkbox" id="i1">By cheking this box,you agree to
+            our <span id="s1">privacy policy</span></p>
+            <p id="pp"><a href="ShopExpress.html">Sign Up</a></p>
+            <p id="p3">Already Have an Account?<br><a href="self.html">Log In</a></p>
+            </div>
+        </fieldset>
+    </body>
+</html>
+<style>
+#fr{
+    display: table;
+}
+.row{
+    display: table-row;
+}
+    .row label{
+        display: table-cell;
+    }
+    .row input{
+        display: table-cell;
+    }
+    #fr .row input{
+        height: 1cm;
+        text-align: center;
+        font-family: tahoma;
+        width: 5cm;
+        border-radius: 50px;
+        box-shadow: 6px 6px 4px blue;
+        text-align: center;
+        color: black;
+        border-color: blue;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: lightskyblue;
+        transition: 0.5s ease-in-out;
+    }
+    #fr .row input:hover{
+        height: 1cm;
+        text-align: center;
+        font-family: tahoma;
+        width: 5cm;
+        border-radius: 50px;
+        box-shadow: 6px 6px 4px dodgerblue;
+        text-align: center;
+        color: black;
+        border-color: blue;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: blue;
+        transform: scale(1.1);
+        position: relative;
+    }
+    label{
+        font-family: tahoma;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: right;
+    }
+    fieldset{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        height: 16cm;
+        padding-top: 50px;
+        margin-top: 50px;
+        border-radius: 20px;
+        border-color: blue;
+        border-width: 2px;
+        background-color: powderblue;
+        box-shadow:inset 0 0 20px dodgerblue;
+    }
+    #p1{
+        text-align: center;
+        font-family: monospace;
+        font-size: large;
+        margin-bottom: 20px;
+
+    }
+    .p1 input.i1{
+        height: auto;
+        width: auto;
+    }
+    #bt{
+        text-align: center;
+    }
+    #pp a{
+         background-color: lightblue;
+        text-decoration: none;
+        color: black;
+        font-family: monospace;
+        font-size: xx-large;
+        padding: 7px;
+        border-radius: 20px;
+        border-width: 3px solid black;
+        box-shadow:  6px 6px 4px blue;
+        margin-top: 15px;
+        padding-left: 40px;
+        padding-right: 40px;
+        background-color: dodgerblue;
+        transition: 0.5s ease-in-out;
+    }
+    #bt #pp a:hover{
+                background-color: lightblue;
+        text-decoration: none;
+        color: white;
+        font-family: monospace;
+        font-size: xx-large;
+        padding: 7px;
+        border-radius: 20px;
+        border-width: 3px solid black;
+        box-shadow:  6px 6px 4px blue;
+        margin-top: 15px;
+        padding-left: 40px;
+        padding-right: 40px;
+        background-color: blue;
+        transform: scale(1.1);
+        position: relative;
+    }
+    img{
+         height: 100px;
+        width: 100px;
+        border-style: ridge;
+        background-color: white;
+        box-shadow: 5px 5px 4px dodgerblue;
+        border-radius: 90px;
+        border-color: blue;
+    }
+    legend{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+ 
+    }
+    #p3{
+        text-align: center;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: large;
+    }
+    #p3 a{
+        text-decoration: none;
+        color: red;
+    }
+    body{
+        background-color: grey;
+    }
+    #bt button a{
+        text-decoration-line: none;
+        color: black;
+    }
+</style>
